@@ -44,16 +44,11 @@ public class LoginModel extends Application  {
 
 
 
-
-
-
-
-
-
     public static void main(String[] args) {
         launch(args);
         LoginController loginController = new LoginController();
         loginController.loginDriver();
+
 
     }
 
