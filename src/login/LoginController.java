@@ -1,13 +1,16 @@
 package login;
 
-import admin.Admin;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -15,6 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.ResourceBundle;
@@ -53,10 +57,23 @@ public class LoginController implements Initializable {
         messageLabel.setText("Username, password or usertype is incorrect.");
     }
 
-    void adminLogin(){
-        //System.out.println("Admin Login ");
+    public  void runHomeScreen() throws IOException {
 
-        Admin adminLogged = new Admin();
+
+        try{
+
+            Stage adminStage = new Stage();
+            FXMLLoader adminLoader = new FXMLLoader();
+            Pane adminRoot = (Pane) adminLoader.load(getClass().getResource("/home/home.fxml").openStream());
+
+            Scene scene = new Scene(adminRoot);
+            adminStage.setScene(scene);
+            adminStage.setTitle("Admin Dashboard");
+
+            adminStage.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -95,52 +112,41 @@ public class LoginController implements Initializable {
                 System.out.println(row.getCell(2).getStringCellValue());
 
                 if(!username.equals(row.getCell(0).getStringCellValue())){
-                   // error();
-                    System.out.println("username incorrect");
+                   error();
+
                     return;
                 }
                 if(!password.equals(row.getCell(1).getStringCellValue())){
-                    //error();
-                    System.out.println("passwrod incorrect");
+                    error();
+
                     return;
                 }
-                if(!type.equals((row.getCell(2).getStringCellValue()))){
-                    //error();
-                    System.out.println("type incorrect");
+                if(!type.equals((row.getCell(2).getStringCellValue()))) {
+                    error();
+
                     return;
-                } else{
-                    switch(typeField.toString()){
+                }
+
+                switch(type){
                         case "admin":
-                            adminLogin();
+                            System.out.println("adming logging in");
+                            runHomeScreen();
                             break;
                         case "faculty":
+                            System.out.println("faculty logging in");
                             facultyLogin();
                             break;
                         case "Human Resources":
+                            System.out.println("HR logging in");
                             hrLogin();
                             break;
+                        default:
+                            System.out.println("type inccorect");
                     }
                 }
 
-
-//                while (cellIterator.hasNext())
-//                {
-//                    Cell cell = cellIterator.next();
-//                    //Check the cell type and format accordingly
-//                    switch (cell.getCellType())
-//
-//                    {
-//                        case NUMERIC :
-//                            System.out.print(cell.getNumericCellValue() + "t");
-//                            break;
-//                        case STRING :
-//                            System.out.print(cell.getStringCellValue() + "t");
-//                            break;
-//                    }
-//                }
-//                System.out.println("");
-            }
             file.close();
+
         }
         catch (Exception e)
         {
