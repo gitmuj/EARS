@@ -6,15 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import org.w3c.dom.Text;
 
 
+import javax.swing.*;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -48,14 +47,23 @@ public class AddNewApplicantController implements Initializable {
     Button addResumeButton;
     @FXML
     Button submitBtn;
+    @FXML
+    TextField listview;
+    @FXML
+    ComboBox educationCb;
+    @FXML
+    ComboBox skillsCb;
+    @FXML
+    ComboBox communicationCb;
+    @FXML
+    ComboBox experienceCb;
+
 
     //create a go back to menu button
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FileChooser fileChooser = new FileChooser();
-
 
         ObservableList<String> options =
                 FXCollections.observableArrayList(
@@ -66,6 +74,14 @@ public class AddNewApplicantController implements Initializable {
                         "Masters",
                         "Phd"
                 );
+        ObservableList<String> scoreOptions =
+                FXCollections.observableArrayList("1","2","3","4","5"
+                );
+
+        educationCb.getItems().addAll(scoreOptions);
+        experienceCb.getItems().addAll(scoreOptions);
+        communicationCb.getItems().addAll(scoreOptions);
+        skillsCb.getItems().add(scoreOptions);
 
         degreeCbox.getItems().addAll(options);
 
@@ -84,11 +100,27 @@ public class AddNewApplicantController implements Initializable {
             }
         });
 
+        addResumeButton.setOnAction(e->{
 
+                FileChooser fc = new FileChooser();
+                //fc.setInitialDirectory();
+                fc.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("PDF Files", "*.pdf"),
+                        new FileChooser.ExtensionFilter("Word doc", "*.doc", "*.docx"));
+                File selectedFile = fc.showOpenDialog(null);
 
+                if(selectedFile != null){
+                    listview.setText(selectedFile.getAbsolutePath());
+                } else{
+                    listview.setText("file is not valid");
+                }
+                // end addAttachmentACtion
+
+        });
 
 
     }
+
 
     // to check if name fields are only letters
     public boolean isString(TextField input){
@@ -152,9 +184,15 @@ public class AddNewApplicantController implements Initializable {
         newApplicant.setMajor(majorField.getText());
         newApplicant.setSchool((schoolField.getText()));
         newApplicant.setLastRole(roleField.getText());
-        newApplicant.setOrganzation(organizationField.getText());
+        newApplicant.setOrganization(organizationField.getText());
         newApplicant.setYearsOfExp(Integer.parseInt(yearsExpField.getText()));
         newApplicant.setComments(commentsField.getText());
+        newApplicant.setEducationScore(Integer.parseInt((String)educationCb.getValue()));
+        newApplicant.setExperienceScore(Integer.parseInt((String)experienceCb.getValue()));
+        newApplicant.setSkillScore(Integer.parseInt((String)skillsCb.getValue()));
+        newApplicant.setCommunicationScore(Integer.parseInt((String)communicationCb.getValue()));
+        newApplicant.setAttachmentPath(listview.getText());
+
 
         return newApplicant;
 
