@@ -19,12 +19,31 @@ public class Applicant {
 	private int communicationScore;
 	private int overallScore;
 
+
 	//new properties added
 	private String major;
 	private String school;
 	private String lastRole;
-	private String organzation;
+	private String organization;
+	private String attachmentPath;
+	private String comments;
+
+
+	public String getOrganization() {
+		return organization;
+	}
+
 	private  int yearsOfExp;
+
+	public String getAttachmentPath() {
+		return attachmentPath;
+	}
+
+	public void setAttachmentPath(String attachmentPath) {
+		this.attachmentPath = attachmentPath;
+	}
+
+
 
 	public String getComments() {
 		return comments;
@@ -34,11 +53,13 @@ public class Applicant {
 		this.comments = comments;
 	}
 
-	private String comments;
-	///need attachment property
+
 
 	public String getMajor() {
 		return major;
+	}
+	public void setOrganization(String organization) {
+		this.organization = organization;
 	}
 
 	public void setMajor(String major) {
@@ -61,13 +82,9 @@ public class Applicant {
 		this.lastRole = lastRole;
 	}
 
-	public String getOrganzation() {
-		return organzation;
-	}
 
-	public void setOrganzation(String organzation) {
-		this.organzation = organzation;
-	}
+
+
 
 	public int getYearsOfExp() {
 		return yearsOfExp;

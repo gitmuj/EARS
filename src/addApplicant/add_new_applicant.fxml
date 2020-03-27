@@ -91,11 +91,54 @@
                         <TextField fx:id="yearsExpField" prefHeight="25.0" prefWidth="63.0" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="41.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Education Score" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ComboBox fx:id="educationCb" prefHeight="25.0" prefWidth="59.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Expierience Score" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ComboBox fx:id="experienceCb" prefHeight="25.0" prefWidth="60.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Skills Score" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ComboBox fx:id="skillsCb" prefHeight="25.0" prefWidth="62.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="133.0" text="Communication Score" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ComboBox fx:id="communicationCb" prefHeight="25.0" prefWidth="50.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                   <Label text="Comments">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>
-                  <TextArea fx:id="commentsField" prefHeight="59.0" prefWidth="677.0" />
+                  <TextArea fx:id="commentsField" prefHeight="59.0" prefWidth="677.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></TextArea>
                   <HBox fx:id="attachmentsHbox" prefHeight="43.0" prefWidth="557.0">
                      <children>
                         <Label text="Additional Attachment:">
@@ -103,7 +146,8 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="addResumeButton" mnemonicParsing="false" text="Add Resume" />
+                        <TextField fx:id="listview" />
+                        <Button fx:id="addResumeButton" mnemonicParsing="false" text="Select File" />
                      </children>
                   </HBox>
                   <Button fx:id="submitBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Submit">
@@ -115,5 +159,6 @@
             </VBox>
          </content>
       </ScrollPane>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
