@@ -36,6 +36,11 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="addNewUserBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" text="Add New User">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" text="Sign Out">
                <VBox.margin>
                   <Insets bottom="10.0" />

@@ -1,19 +1,28 @@
 package login;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.io.IOException;
+import java.net.URL;
+import java.util.*;
 
 
-public class LoginDatabase<keyset> {
+public class LoginDatabase<keyset> implements Initializable {
 
     int numberOfUsers=0;
 
@@ -78,10 +87,10 @@ public class LoginDatabase<keyset> {
 
     }
 
-    void initializeDatabase(){
-       addUser("admin", "password", "admin");
-
-    }
+//    void initializeDatabase(){
+//       addUser("admin", "password", "admin");
+//
+//    }
 
 
 
@@ -123,5 +132,84 @@ public class LoginDatabase<keyset> {
     } // end printMap
 
 
+
+    //Add new user
+        @FXML
+        TextField usernameField, passwordField;
+
+        @FXML
+        ComboBox usertypeField;
+        @FXML
+        Button submitbtn, clearbtn;
+
+
+        @Override
+        public void initialize(URL url, ResourceBundle resourceBundle) {
+
+            ObservableList<String> usertypes =
+                    FXCollections.observableArrayList(
+                            "admin",
+                            "faculty"
+                    );
+            usertypeField.getItems().addAll(usertypes);
+
+            submitbtn.setOnAction(e->{
+                onSubmit();
+            });
+
+            clearbtn.setOnAction(e->{
+                usernameField.setText("");
+                passwordField.setText("");
+            });
+
+
+        }
+
+    public void updateUserDatabase(String username, String password, String usertype) {
+        String excelFilePath = "database.xlsx";
+
+        try {
+            FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
+            Workbook workbook = WorkbookFactory.create(inputStream);
+
+            Sheet sheet = workbook.getSheetAt(0);
+
+            Object[][] userData = {
+                    {username, password, usertype},
+            };
+
+            int rowCount = sheet.getLastRowNum();
+
+            for (Object[] aBook : userData) {
+                Row row = sheet.createRow(++rowCount);
+
+                int columnCount = 0;
+
+                Cell cell = row.createCell(columnCount);
+//                cell.setCellValue(rowCount);
+
+                for (Object field : aBook) {
+                    cell = row.createCell(columnCount++);
+                        cell.setCellValue((String) field);
+                }
+
+            }
+
+            inputStream.close();
+
+            FileOutputStream outputStream = new FileOutputStream("database.xlsx");
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+
+        } catch (EncryptedDocumentException | IOException ex) {
+            ex.printStackTrace();
+        }
+    } // end update user database
+
+        public void onSubmit(){
+            updateUserDatabase(usernameField.getText(), passwordField.getText(), (String)usertypeField.getValue());
+
+        }
 
 }

@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
 
     @FXML
-    Button addApplicationBtn;
+    Button addApplicationBtn, addNewUserBtn;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -23,6 +23,14 @@ public class HomeController implements Initializable {
             try {
                 runAddApplicant();
             } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        addNewUserBtn.setOnAction(e->{
+            try{
+                runAddNewUser();
+            } catch (IOException ex){
                 ex.printStackTrace();
             }
         });
@@ -46,5 +54,24 @@ public class HomeController implements Initializable {
         }
 
 
-    }
+    } // end runAddApplicant
+
+    public void runAddNewUser() throws IOException {
+        Stage applicantStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            Pane applicantRoot = (Pane) loader.load(getClass().getResource("/login/add_user.fxml").openStream());
+            Scene scene = new Scene(applicantRoot);
+            applicantStage.setScene(scene);
+            applicantStage.setTitle("EARS - Add New User");
+
+            applicantStage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    } // end runAddApplicant
 }

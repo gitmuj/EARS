@@ -77,12 +77,16 @@ public class LoginController implements Initializable {
 
     }
 
-    void facultyLogin(){
+    void facultyLogin() throws IOException {
+        runHomeScreen();
         System.out.println("Faculty Login ");
     }
-    void hrLogin(){
+    void hrLogin() throws IOException {
+
+        runHomeScreen();
         System.out.println("HR Login ");
     }
+
     void loginCheck(){
 
         String username = usernameField.getText();
@@ -102,8 +106,14 @@ public class LoginController implements Initializable {
 
             //Iterate through each rows one by one
             Iterator<Row> rowIterator = sheet.iterator();
+
+
+
             while (rowIterator.hasNext())
             {
+                boolean usernameFlag = false;
+                boolean passwordFlag = false;
+                boolean usertypeFlag = false;
                 Row row = rowIterator.next();
                 //For each row, iterate through all the columns
                 Iterator<Cell> cellIterator = row.cellIterator();
@@ -111,23 +121,18 @@ public class LoginController implements Initializable {
                 System.out.println(row.getCell(1).getStringCellValue());
                 System.out.println(row.getCell(2).getStringCellValue());
 
-                if(!username.equals(row.getCell(0).getStringCellValue())){
-                   error();
-
-                    return;
+                if(username.equals(row.getCell(0).getStringCellValue())){
+                    usernameFlag = true;
                 }
-                if(!password.equals(row.getCell(1).getStringCellValue())){
-                    error();
-
-                    return;
+                if(password.equals(row.getCell(1).getStringCellValue())){
+                  passwordFlag = true;
                 }
-                if(!type.equals((row.getCell(2).getStringCellValue()))) {
-                    error();
-
-                    return;
+                if(type.equals((row.getCell(2).getStringCellValue()))) {
+                   usertypeFlag = true;
                 }
 
-                switch(type){
+                if(usernameFlag && passwordFlag && usertypeFlag){
+                    switch(type){
                         case "admin":
                             System.out.println("adming logging in");
                             runHomeScreen();
@@ -142,8 +147,16 @@ public class LoginController implements Initializable {
                             break;
                         default:
                             System.out.println("type inccorect");
-                    }
-                }
+                    } // end switch
+                    file.close();
+
+                    return;
+                } // end if
+
+
+            } // end while
+
+            error();
 
             file.close();
 
@@ -159,8 +172,8 @@ public class LoginController implements Initializable {
         /*intialize database to create admin user */
 
         LoginDatabase database = new LoginDatabase();
-        database.initializeDatabase();
-        database.printMap();
+//        database.initializeDatabase();
+//        database.printMap();
 
     }
 
