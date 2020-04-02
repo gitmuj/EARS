@@ -180,7 +180,7 @@ public class AddNewApplicantController implements Initializable {
         newApplicant.setLastName(lastName.getText());
         newApplicant.setAddress(addressField.getText());
         newApplicant.setEmail(emailField.getText());
-        newApplicant.setPhoneNumber(phonenumField.getText());
+        newApplicant.setPhoneNumber(Long.parseLong(phonenumField.getText()) );
         newApplicant.setMajor(majorField.getText());
         newApplicant.setSchool((schoolField.getText()));
         newApplicant.setLastRole(roleField.getText());

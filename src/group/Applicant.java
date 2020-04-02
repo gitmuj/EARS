@@ -1,6 +1,4 @@
-package addApplicant;
-
-import org.apache.poi.hslf.record.CString;
+package group;
 
 public class Applicant {
 	private int id;
@@ -18,81 +16,6 @@ public class Applicant {
 	//communication score makes up 40% (CAN'T REMEMBER IF THIS IS RIGHT)
 	private int communicationScore;
 	private int overallScore;
-
-
-	//new properties added
-	private String major;
-	private String school;
-	private String lastRole;
-	private String organization;
-	private String attachmentPath;
-	private String comments;
-
-
-	public String getOrganization() {
-		return organization;
-	}
-
-	private  int yearsOfExp;
-
-	public String getAttachmentPath() {
-		return attachmentPath;
-	}
-
-	public void setAttachmentPath(String attachmentPath) {
-		this.attachmentPath = attachmentPath;
-	}
-
-
-
-	public String getComments() {
-		return comments;
-	}
-
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-
-
-
-	public String getMajor() {
-		return major;
-	}
-	public void setOrganization(String organization) {
-		this.organization = organization;
-	}
-
-	public void setMajor(String major) {
-		this.major = major;
-	}
-
-	public String getSchool() {
-		return school;
-	}
-
-	public void setSchool(String school) {
-		this.school = school;
-	}
-
-	public String getLastRole() {
-		return lastRole;
-	}
-
-	public void setLastRole(String lastRole) {
-		this.lastRole = lastRole;
-	}
-
-
-
-
-
-	public int getYearsOfExp() {
-		return yearsOfExp;
-	}
-
-	public void setYearsOfExp(int yearsOfExp) {
-		this.yearsOfExp = yearsOfExp;
-	}
 
 	public Applicant() {
 		
@@ -192,7 +115,7 @@ public class Applicant {
 	
 	@Override
 	public String toString() {
-		return "addApplicant.Applicant named : " + firstName + " " + lastName;
+		return "Applicant named : " + firstName + " " + lastName;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package home;
 
+import group.DatabaseView;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +18,9 @@ public class HomeController implements Initializable {
 
     @FXML
     Button addApplicationBtn, addNewUserBtn;
+
+    @FXML
+    Button viewDatabasebtn;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -33,6 +38,15 @@ public class HomeController implements Initializable {
             } catch (IOException ex){
                 ex.printStackTrace();
             }
+        });
+
+        viewDatabasebtn.setOnAction(e->{
+            try {
+                runViewDatabase();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
         });
 
     }
@@ -73,5 +87,12 @@ public class HomeController implements Initializable {
         }
 
 
-    } // end runAddApplicant
+    } // end runAddNewUser
+
+    public void runViewDatabase() throws Exception {
+
+
+        DatabaseView newDatabaseView = new DatabaseView();
+
+    }
 }
