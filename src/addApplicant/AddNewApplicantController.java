@@ -1,5 +1,7 @@
 package addApplicant;
 
+
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,15 +11,28 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.w3c.dom.Text;
 
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddNewApplicantController implements Initializable {
+
+    public int numberOfApplicants=0;
+    public ArrayList<Applicant> applicantList = new ArrayList<Applicant>();
 
     @FXML
     TextField firstName;
@@ -57,6 +72,8 @@ public class AddNewApplicantController implements Initializable {
     ComboBox communicationCb;
     @FXML
     ComboBox experienceCb;
+    @FXML
+    TextField jobID;
 
 
     //create a go back to menu button
@@ -81,7 +98,7 @@ public class AddNewApplicantController implements Initializable {
         educationCb.getItems().addAll(scoreOptions);
         experienceCb.getItems().addAll(scoreOptions);
         communicationCb.getItems().addAll(scoreOptions);
-        skillsCb.getItems().add(scoreOptions);
+        skillsCb.getItems().addAll(scoreOptions);
 
         degreeCbox.getItems().addAll(options);
 
@@ -97,6 +114,8 @@ public class AddNewApplicantController implements Initializable {
                 //call all tests, if they pass then
                 // call the createNewapplicant method ( the new applicant method will return an applicant)
                 // have some sucess mesage if submitted.
+                onSubmit();
+
             }
         });
 
@@ -176,27 +195,105 @@ public class AddNewApplicantController implements Initializable {
     public Applicant createNewApplicant(){
 
         Applicant newApplicant = new  Applicant();
+        newApplicant.setId(++numberOfApplicants);
+        newApplicant.setJobId(Integer.parseInt(jobID.getText()));
         newApplicant.setFirstName(firstName.getText());
         newApplicant.setLastName(lastName.getText());
         newApplicant.setAddress(addressField.getText());
         newApplicant.setEmail(emailField.getText());
-        newApplicant.setPhoneNumber(Long.parseLong(phonenumField.getText()) );
+        newApplicant.setPhoneNumber(phonenumField.getText());
         newApplicant.setMajor(majorField.getText());
         newApplicant.setSchool((schoolField.getText()));
         newApplicant.setLastRole(roleField.getText());
         newApplicant.setOrganization(organizationField.getText());
         newApplicant.setYearsOfExp(Integer.parseInt(yearsExpField.getText()));
-        newApplicant.setComments(commentsField.getText());
         newApplicant.setEducationScore(Integer.parseInt((String)educationCb.getValue()));
         newApplicant.setExperienceScore(Integer.parseInt((String)experienceCb.getValue()));
         newApplicant.setSkillScore(Integer.parseInt((String)skillsCb.getValue()));
         newApplicant.setCommunicationScore(Integer.parseInt((String)communicationCb.getValue()));
+        newApplicant.setComments(commentsField.getText());
         newApplicant.setAttachmentPath(listview.getText());
 
+        applicantList.add(newApplicant);
 
         return newApplicant;
 
     }
+
+    public void updateApplicantDatabase(Applicant applicant) {
+        String excelFilePath = "database.xlsx";
+
+        try {
+            FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
+            Workbook workbook = WorkbookFactory.create(inputStream);
+
+            Sheet sheet = workbook.getSheet("Applicants");
+
+            Object[][] applicantData = {
+                    {
+            applicant.getId(),
+            applicant.getJobId(),
+            applicant.getFirstName(),
+            applicant.getLastName(),
+            applicant.getAddress(),
+            applicant.getEmail(),
+            applicant.getPhoneNumber(),
+            applicant.getMajor(),
+            applicant.getSchool(),
+            applicant.getLastRole(),
+            applicant.getOrganization(),
+            applicant.getYearsOfExp(),
+            applicant.getEducationScore(),
+            applicant.getExperienceScore(),
+            applicant.getSkillScore(),
+            applicant.getCommunicationScore(),
+            applicant.getComments(),
+            applicant.getAttachmentPath(),
+                    }
+            };
+
+            int rowCount = sheet.getLastRowNum();
+
+            for (Object[] aBook : applicantData) {
+                Row row = sheet.createRow(++rowCount);
+
+                int columnCount = 0;
+
+                Cell cell = row.createCell(columnCount);
+//                cell.setCellValue(rowCount);
+
+                for (Object field : aBook) {
+
+                    if (field instanceof String) {
+                        cell = row.createCell(columnCount++);
+                        cell.setCellValue((String)field);
+                    } else if (field instanceof Integer) {
+                        cell = row.createCell(columnCount++);
+                        cell.setCellValue((Integer) field);
+                    }
+
+                }
+
+            }
+
+            inputStream.close();
+
+            FileOutputStream outputStream = new FileOutputStream("database.xlsx");
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+
+        } catch (EncryptedDocumentException | IOException ex) {
+            ex.printStackTrace();
+        }
+    } // end update user database
+
+    public void onSubmit(){
+
+        updateApplicantDatabase(createNewApplicant());
+
+    }
+
 
 
 

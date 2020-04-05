@@ -150,6 +150,12 @@
                         <Button fx:id="addResumeButton" mnemonicParsing="false" text="Select File" />
                      </children>
                   </HBox>
+                  <HBox prefHeight="40.0" prefWidth="641.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="62.0" text="For Job ID" />
+                        <TextField fx:id="jobID" prefHeight="25.0" prefWidth="68.0" />
+                     </children>
+                  </HBox>
                   <Button fx:id="submitBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Submit">
                      <VBox.margin>
                         <Insets bottom="10.0" left="200.0" right="10.0" top="10.0" />
@@ -159,6 +165,5 @@
             </VBox>
          </content>
       </ScrollPane>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

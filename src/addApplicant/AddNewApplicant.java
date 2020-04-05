@@ -27,7 +27,7 @@ public class AddNewApplicant extends Application {
 
 
         Parent root = FXMLLoader.load(getClass().getResource("add_new_applicant.fxml"));
-        primaryStage.setTitle("EARS - Add New addApplicant.Applicant"); // window is called stage
+        primaryStage.setTitle("EARS - Add New Applicant"); // window is called stage
         primaryStage.setScene(new Scene(root, 800, 600)); // content inside window
         primaryStage.show();
 

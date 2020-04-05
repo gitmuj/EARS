@@ -1,6 +1,5 @@
 package home;
 
-import group.DatabaseView;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -90,9 +89,20 @@ public class HomeController implements Initializable {
     } // end runAddNewUser
 
     public void runViewDatabase() throws Exception {
+        Stage applicantStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            Pane applicantRoot = (Pane) loader.load(getClass().getResource("/database/view_database.fxml").openStream());
+            Scene scene = new Scene(applicantRoot);
+            applicantStage.setScene(scene);
+            applicantStage.setTitle("EARS - Database View");
+
+            applicantStage.show();
 
 
-        DatabaseView newDatabaseView = new DatabaseView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

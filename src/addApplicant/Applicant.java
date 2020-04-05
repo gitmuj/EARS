@@ -3,12 +3,15 @@ package addApplicant;
 import org.apache.poi.hslf.record.CString;
 
 public class Applicant {
+
+
 	private int id;
+	private int jobId;
 	private String firstName;
 	private String lastName;
 	private String address;
 	private String email;
-	private long phoneNumber;
+	private String phoneNumber;
 	//education score makes up 20%
 	private int educationScore;
 	//experience score makes up 30% (I THINK THIS IS THE RIGHT NUMBER)
@@ -20,6 +23,9 @@ public class Applicant {
 	private int overallScore;
 
 
+
+
+
 	//new properties added
 	private String major;
 	private String school;
@@ -27,13 +33,25 @@ public class Applicant {
 	private String organization;
 	private String attachmentPath;
 	private String comments;
+	private  int yearsOfExp;
+
+	//GETTERS AND SETTERS
+
+
+	public int getJobId() {
+		return jobId;
+	}
+
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
+	}
 
 
 	public String getOrganization() {
 		return organization;
 	}
 
-	private  int yearsOfExp;
+
 
 	public String getAttachmentPath() {
 		return attachmentPath;
@@ -98,7 +116,7 @@ public class Applicant {
 		
 	}
 
-	//GETTERS AND SETTERS
+
 	
 	public int getId() {
 		return id;
@@ -140,11 +158,11 @@ public class Applicant {
 		this.email = email;
 	}
 
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -184,9 +202,14 @@ public class Applicant {
 		return overallScore;
 	}
 
-	public void setOverallScore(int overallScore) {
-		this.overallScore = overallScore;
+	public void setOverallScore() {
+		this.overallScore = (int) ((educationScore + experienceScore + skillScore + communicationScore)/20.00*100);
 	}
+
+
+
+
+
 	//END GETTERS AND SETTERS
 	
 	
