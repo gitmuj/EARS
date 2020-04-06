@@ -1,4 +1,5 @@
 package addApplicant;
+//Group 10 - Mujtaba Mohmand
 
 
 import javafx.application.Application;
@@ -213,6 +214,7 @@ public class AddNewApplicantController implements Initializable {
         newApplicant.setCommunicationScore(Integer.parseInt((String)communicationCb.getValue()));
         newApplicant.setComments(commentsField.getText());
         newApplicant.setAttachmentPath(listview.getText());
+        newApplicant.setDegree((String)degreeCbox.getValue());
 
         applicantList.add(newApplicant);
 
@@ -249,6 +251,7 @@ public class AddNewApplicantController implements Initializable {
             applicant.getCommunicationScore(),
             applicant.getComments(),
             applicant.getAttachmentPath(),
+            applicant.getDegree()
                     }
             };
 

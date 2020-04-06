@@ -1,4 +1,6 @@
 package home;
+//Group 10 - Mujtaba Mohmand
+//Login information is username: admin, password : password, usertype: admin
 
 import javafx.application.Application;
 import javafx.fxml.FXML;

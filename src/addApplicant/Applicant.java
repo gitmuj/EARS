@@ -24,9 +24,8 @@ public class Applicant {
 
 
 
-
-
 	//new properties added
+	private String degree;
 	private String major;
 	private String school;
 	private String lastRole;
@@ -208,6 +207,13 @@ public class Applicant {
 
 
 
+	public String getDegree() {
+		return degree;
+	}
+
+	public void setDegree(String degree) {
+		this.degree = degree;
+	}
 
 
 	//END GETTERS AND SETTERS

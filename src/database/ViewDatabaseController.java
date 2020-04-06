@@ -142,6 +142,8 @@ public class ViewDatabaseController implements Initializable {
                         case 17:
                             applicant.setAttachmentPath(cell.getStringCellValue());
                             break;
+                        case 18:
+                            applicant.setDegree(cell.getStringCellValue());
                     } // end switch
 
 
@@ -201,6 +203,7 @@ public class ViewDatabaseController implements Initializable {
                         scene2Controller.expScore.setText(""+applicant.getExperienceScore());
                         scene2Controller.commentsField.setText(applicant.getComments());
                         scene2Controller.jobId.setText(""+applicant.getJobId());
+                        scene2Controller.degreeField.setText(applicant.getDegree());
 
 
 

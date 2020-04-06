@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="695.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="database.ViewApplicantController">
+<AnchorPane prefHeight="695.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="database.ViewApplicantController">
    <children>
       <ScrollPane layoutX="14.0" layoutY="19.0" prefHeight="658.0" prefWidth="844.0">
          <content>
@@ -14,9 +18,15 @@
                   <HBox prefHeight="50.0" prefWidth="677.0">
                      <children>
                         <Label prefHeight="24.0" prefWidth="70.0" text="First Name:*" />
-                        <Label fx:id="firstName" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: white;" />
+                        <Label fx:id="firstName" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: white;">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Label>
                         <Label prefHeight="24.0" prefWidth="70.0" text="Last Name:*" />
-                        <Label fx:id="lastName" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: white;" />
+                        <Label fx:id="lastName" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: white;">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox prefHeight="40.0" prefWidth="677.0">
@@ -122,10 +132,13 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>
-                  <TextArea fx:id="commentsField" prefHeight="59.0" prefWidth="677.0" style="-fx-background-color: white;">
+                  <TextArea fx:id="commentsField" prefHeight="129.0" prefWidth="677.0" style="-fx-background-color: white;">
                      <VBox.margin>
                         <Insets bottom="5.0" />
-                     </VBox.margin></TextArea>
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextArea>
                   <HBox fx:id="attachmentsHbox" prefHeight="43.0" prefWidth="557.0">
 
                   </HBox>
