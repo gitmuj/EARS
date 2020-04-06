@@ -8,7 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import taf.Job;
+import taf.JobScreen;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,7 +19,7 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
 
     @FXML
-    Button addApplicationBtn, addNewUserBtn;
+    Button addApplicationBtn, addNewUserBtn, addJobBtn;
 
     @FXML
     Button viewDatabasebtn;
@@ -47,6 +50,16 @@ public class HomeController implements Initializable {
             }
 
         });
+
+        addJobBtn.setOnAction(e->{
+            try {
+                runAddJob();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+        });
+
 
     }
 
@@ -103,6 +116,15 @@ public class HomeController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void runAddJob(){
+
+
+        Job db = new Job();
+        JobScreen jobScreen = new JobScreen();
+        jobScreen.run();
 
     }
 }

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="695.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="database.ViewApplicantController">
+   <children>
+      <ScrollPane layoutX="14.0" layoutY="19.0" prefHeight="658.0" prefWidth="844.0">
+         <content>
+            <VBox prefHeight="614.0" prefWidth="677.0">
+               <children>
+                  <HBox prefHeight="50.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="24.0" prefWidth="70.0" text="First Name:*" />
+                        <Label fx:id="firstName" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: white;" />
+                        <Label prefHeight="24.0" prefWidth="70.0" text="Last Name:*" />
+                        <Label fx:id="lastName" prefHeight="25.0" prefWidth="179.0" style="-fx-background-color: white;" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="58.0" text="Address*" />
+                        <Label fx:id="addressField" prefHeight="25.0" prefWidth="444.0" style="-fx-background-color: white;" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="85.0" text="Phone number*" />
+                        <Label fx:id="phonenumField" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: white;" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="58.0" text="Email:*" />
+                        <Label fx:id="emailField" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: white;" />
+                     </children>
+                  </HBox>
+                  <Label text="Education">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="58.0" text="Degree:" />
+                        <Label fx:id="degreeField" style="-fx-background-color: white;" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="58.0" text="Major:" />
+                        <Label fx:id="majorField" style="-fx-background-color: white;" text="Label" />
+
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="58.0" text="School:" />
+                        <Label fx:id="schoolField" style="-fx-background-color: white;" text="Label" />
+
+                     </children>
+                  </HBox>
+                  <Label prefHeight="17.0" prefWidth="81.0" text="Expierience">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="58.0" text="Last Role:" />
+                        <Label fx:id="roleField" prefHeight="25.0" prefWidth="242.0" style="-fx-background-color: white;" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="86.0" text="Organization" />
+                        <Label fx:id="organizationField" prefHeight="25.0" prefWidth="215.0" style="-fx-background-color: white;" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="230.0" text="Number of years of relevant expierience" />
+                        <Label fx:id="yearsExpField" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: white;" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Education Score" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="educationScore" prefHeight="17.0" prefWidth="42.0" style="-fx-background-color: white;" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Expierience Score" />
+                        <HBox prefHeight="32.0" prefWidth="46.0">
+                           <children>
+                              <Label fx:id="expScore" prefHeight="17.0" prefWidth="44.0" style="-fx-background-color: white;" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Skills Score" />
+                        <Label fx:id="skillScore" style="-fx-background-color: white;" text="Label" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="677.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="133.0" text="Communication Score" />
+                        <Label fx:id="communicationScore" style="-fx-background-color: white;" text="Label" />
+                     </children>
+                  </HBox>
+                  <Label text="Comments">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <TextArea fx:id="commentsField" prefHeight="59.0" prefWidth="677.0" style="-fx-background-color: white;">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></TextArea>
+                  <HBox fx:id="attachmentsHbox" prefHeight="43.0" prefWidth="557.0">
+
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="641.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="62.0" text="For Job ID" />
+                        <Label fx:id="jobId" prefHeight="25.0" prefWidth="68.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -5,13 +5,10 @@
 
 <AnchorPane prefHeight="577.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="database.ViewDatabaseController">
    <children>
-      <Label layoutX="36.0" layoutY="38.0" text="Minimum Overall Score:" />
-      <TextField fx:id="scoreInput" layoutX="160.0" layoutY="34.0" prefHeight="25.0" prefWidth="35.0" />
-      <Label layoutX="126.0" layoutY="76.0" text="Job ID" />
-      <TextField fx:id="jobIdInput" layoutX="161.0" layoutY="72.0" prefHeight="25.0" prefWidth="35.0" />
-      <Label layoutX="88.0" layoutY="108.0" prefHeight="17.0" prefWidth="72.0" text="Applicant ID" />
-      <TextField fx:id="applicantIdInput" layoutX="160.0" layoutY="104.0" prefHeight="25.0" prefWidth="35.0" />
-      <Button fx:id="searchBtn" layoutX="266.0" layoutY="34.0" mnemonicParsing="false" text="Search" />
+      <Label layoutX="108.0" layoutY="47.0" prefHeight="17.0" prefWidth="35.0" text="Name" />
+      <TextField fx:id="nameInput" layoutX="153.0" layoutY="43.0" prefHeight="25.0" prefWidth="185.0" />
+      <Label layoutX="74.0" layoutY="87.0" prefHeight="17.0" prefWidth="73.0" text="Applicant ID" />
+      <TextField fx:id="applicantIdInput" layoutX="153.0" layoutY="83.0" prefHeight="25.0" prefWidth="35.0" />
       <TableView fx:id="tableView" layoutX="24.0" layoutY="138.0" prefHeight="425.0" prefWidth="676.0">
         <columns>
           <TableColumn fx:id="applicantIdCol" prefWidth="88.0" text="Applicant ID" />
